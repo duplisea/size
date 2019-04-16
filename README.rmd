@@ -1,0 +1,34 @@
+---
+title: "README"
+author: "Daniel E. Duplisea"
+date: "16 April 2019"
+output: md_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Install and load package
+
+```{r installsize, eval=FALSE, message=FALSE}
+library(devtools)
+install_github("duplisea/size")
+```
+
+Load the package
+```{r loadccca, message=FALSE}
+library(size)
+```
+
+## PLF analysis with the installed dataset
+
+The PLF for all species with a 30 cm threshold between small and large individuals
+```{r PLFbase}
+PLF.all= PLF.f(ngsl.plf.data,species.group="all",cutoff=30)
+```
+
+Plot the various PLF community indicators
+```{r PLFplots}
+plot(PLF.all$year, PLF.all$plf,xlab="Year",ylab="Proportion of fish 30cm and larger",type="l",lwd=2)
+```

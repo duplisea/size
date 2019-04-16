@@ -1,0 +1,16 @@
+Package: size
+Type: Package
+Title: Size based indicators for the northern Gulf of St Lawrence groundfish survey
+Version: 0.1.0
+Author: Daniel E. Duplisea
+Maintainer: Daniel Duplisea <daniel.duplisea@dfo-mpo.gc.ca>
+Description: 
+License: 2019 Canadian Crown Copyright
+Encoding: UTF-8
+LazyData: true
+Depends:
+  sas7bdat,
+  dplyr,
+  reshape2
+Suggests:
+RoxygenNote: 6.1.1
