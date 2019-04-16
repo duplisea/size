@@ -21,6 +21,13 @@ Load the package
 library(size)
 ```
 
+Plot the survey locations on a map of the Gulf
+```{r mapsurvey, message=FALSE}
+map.f()
+points(-decdeg.f(ngsl.set$lon_deb*100),decdeg.f(ngsl.set$lat_deb*100),pch=".",col="red")
+```
+
+
 ## PLF analysis with the installed dataset
 
 The PLF for all species with a 30 cm threshold between small and large individuals

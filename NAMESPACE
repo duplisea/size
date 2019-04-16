@@ -2,4 +2,6 @@
 
 export(PLF.f)
 export(count.distinct)
+export(decdeg.f)
 export(import.paces.f)
+export(map.f)

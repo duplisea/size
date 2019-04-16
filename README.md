@@ -8,6 +8,13 @@ Load the package
 
     library(size)
 
+Plot the survey locations on a map of the Gulf
+
+    map.f()
+    points(-decdeg.f(ngsl.set$lon_deb*100),decdeg.f(ngsl.set$lat_deb*100),pch=".",col="red")
+
+![](README_files/figure-markdown_strict/mapsurvey-1.png)
+
 PLF analysis with the installed dataset
 ---------------------------------------
 
