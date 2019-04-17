@@ -9,6 +9,7 @@ Load the package
     library(size)
 
 Plot the survey locations on a map of the Gulf
+----------------------------------------------
 
     map.f()
     points(-decdeg.f(ngsl.set$lon_deb*100),decdeg.f(ngsl.set$lat_deb*100),pch=".",col="red")
@@ -25,6 +26,6 @@ individuals
 
 Plot the various PLF community indicators
 
-    plot(PLF.all$year, PLF.all$plf,xlab="Year",ylab="Proportion of fish 30cm and larger",type="l",lwd=2)
+    plot(PLF.all$year, PLF.all$plf,xlab="Year",ylab="Proportion of individuals 30cm and larger",type="l",lwd=2)
 
 ![](README_files/figure-markdown_strict/PLFplots-1.png)

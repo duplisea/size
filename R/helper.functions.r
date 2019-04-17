@@ -49,4 +49,5 @@ map.f= function(longs=c(-74,-50),lats=c(43,52.25),land.colour="sienna3",sea.colo
   mtext("Latitude north",side=2,line=3)
   axis(1, at=xint, labels=xint*-1, lty=1,lwd=1,lwd.ticks= 1, cex.axis=.7)
   axis(2, at=yint, labels=yint*1, lty=1,lwd=1,lwd.ticks=1,las=1, cex.axis=.7)
+  box()
 }
