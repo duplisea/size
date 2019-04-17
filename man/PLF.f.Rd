@@ -4,12 +4,9 @@
 \alias{PLF.f}
 \title{Compute the proportion of large fish from the survey data}
 \usage{
-PLF.f(dataset = ngsl.plf.data, cutoff = 30,
-  species.group = "demersal", code.qc = 792)
+PLF.f(cutoff = 30, species.group = "demersal", code.qc = 792)
 }
 \arguments{
-\item{dataset}{the mean length frequency dataset}
-
 \item{cutoff}{the size (cm) marking the ditinction between large and small fish. Large fish are >= to this size.}
 
 \item{species.group}{the species group you want to be represented in the data. The PLF is generally computed only for demersals
