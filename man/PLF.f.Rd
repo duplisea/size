@@ -4,7 +4,7 @@
 \alias{PLF.f}
 \title{Compute the proportion of large fish from the survey data}
 \usage{
-PLF.f(cutoff = 30, species.group = "demersal", code.qc = 792)
+PLF.f(cutoff = 30, species.group = "demersal", codeqc = 792)
 }
 \arguments{
 \item{cutoff}{the size (cm) marking the ditinction between large and small fish. Large fish are >= to this size.}
@@ -12,7 +12,7 @@ PLF.f(cutoff = 30, species.group = "demersal", code.qc = 792)
 \item{species.group}{the species group you want to be represented in the data. The PLF is generally computed only for demersals
 If "code", then you need to provide the Quebec species numerical code.}
 
-\item{code.qc}{the species numerical code used in Quebec region for a species. 792 is unspeciated redfish}
+\item{codeqc}{the species numerical code used in Quebec region for a species. 792 is unspeciated redfish}
 }
 \description{
 The proporption of large fish indicator by abundance.

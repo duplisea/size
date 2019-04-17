@@ -136,6 +136,6 @@ import.paces.f= function(data.directory, save.rda=T){
   PLF.cols= c("annee","espece","english","lenclass","abundance")
   cols= match(PLF.cols,names(ngsl.lf.mean))
   ngsl.plf.data= ngsl.lf.mean[,cols]
-  names(ngsl.plf.data)= c("year","code.qc","english","length","abundance")
+  names(ngsl.plf.data)= c("year","codeqc","english","length","abundance")
   save(ngsl.plf.data,file="ngsl.plf.data.rda")
 }
