@@ -38,13 +38,17 @@ Numbers per haul in log2 weight categories
     mtext(side=1,text="Log2 Weight-class",outer=T,line=2)
     mtext(side=2,text="Abundance (no per tow)",outer=T,line=2)
 
-![](README_files/figure-markdown_strict/BSS-1.png) \#\# The predation
-size spectrum Given the predator size distribution in the system in a
-year, the average predator/prey weight ratio and the variance (cv) of
-this this, the exponent relating consumption rate to body weight for a
-predator, the predation size spectrum can be determined. This is like a
-predation risk or the sizes of prey that would be most likely targetted
-by predators in the system in a year.
+![](README_files/figure-markdown_strict/BSS-1.png)
+
+The predation size spectrum
+---------------------------
+
+Given the predator size distribution in the system in a year, the
+average predator/prey weight ratio and the variance (cv) of this this,
+the exponent relating consumption rate to body weight for a predator,
+the predation size spectrum can be determined. This is like a predation
+risk or the sizes of prey that would be most likely targetted by
+predators in the system in a year.
 
 type ?PSS.f to see why I suppressed the warnings and I do not want them
 to appear in this markdown file.
