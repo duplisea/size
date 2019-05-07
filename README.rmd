@@ -4,6 +4,7 @@ author: "Daniel E. Duplisea"
 date: ""
 output: md_document
 ---
+[![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
