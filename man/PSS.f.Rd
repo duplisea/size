@@ -4,7 +4,7 @@
 \alias{PSS.f}
 \title{Predation size spectrum}
 \usage{
-PSS.f(species.group, codeqc, PPWR = 10, PPWR.cv = 0.1, minPPWR = 3,
+PSS.f(species.group, codeqc, PPWR = 30, PPWR.cv = 0.25, minPPWR = 5,
   QWb = 0.75)
 }
 \arguments{
@@ -37,9 +37,15 @@ The predator-prey weight ratio is modelled as a log-normal distribution. The ene
         preference, i.e. given the size distribution of predators in the system, the PSS shows where they would most like to 
         take their prey. Since the index is relative, a QWa parameter is not needed as it is just a scaling parameter.
         
+        The PPWR CV 0.25 is from from Hahm and Langton (1984). Their PPWR is likely too large for predators in the Northern
+        Gulf which are eating other fish and large invertebrates such as shrimp. Our default value is 30 which means that a
+        predator is 30 times larger its prey (by weight) on average.
+        
         The log normal density function will produce NaNs for some size ranges and warnings will be produced. This is generally 
         nothing to worry about as NaNs are converted to 0. The warnings have not be suppressed, however.
 }
 \references{
 Duplisea, D.E. 2005. Running the gauntlet: the predation environment of small fish in the northern Gulf of St Lawrence, Canada. ICES Journal of Marine Science 62: 412-416.
+        
+        Hahm, W. and Langton, R. 1984. Prey selection based on predator/prey weight ratios for some Northwest Atlantic fish. Marine Ecology Progress Series 19: 1-5.
 }

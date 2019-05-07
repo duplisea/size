@@ -14,5 +14,8 @@ table (codeqc) for other species}
 }
 \description{
 The numbers an biomass at log2 weight class size spectrum for the community components you select. 
-    This is the classic size spectrum of Sheldon & Dickie
+        This is the classic size spectrum of Sheldon & Dickie
+}
+\references{
+Duplisea, D.E. and Castonguay, M. 2006. Comparison and utility of different size-based metrics of fish communities for detecting fishery impacts. Canadian Journal of Fisheries and Aquatic Sciences 63: 810-820.
 }

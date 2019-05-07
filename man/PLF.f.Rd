@@ -18,3 +18,6 @@ table (codeqc) for other species}
 \description{
 The proporption of large fish indicator by abundance.
 }
+\references{
+Greenstreet, S.P., Rogers, S.I., Rice, J.C., Piet, G.J., Guirey, E.J., Fraser, H.M. and Fryer, R.J. 2010. Development of the EcoQO for the North Sea fish community. ICES Journal of Marine Science 68: 1-11.
+}

@@ -55,16 +55,16 @@ predators in the system in a year.
 type ?PSS.f to see why I suppressed the warnings and I do not want them
 to appear in this markdown file.
 
-    pss= suppressWarnings(PSS.f("all",PPWR=10))
-    pss.scaled= pss$pred.risk/max(pss$pred.risk)
-    plot(pss$year, pss.scaled[10,],type="l",lwd=2, xlab="Year",ylab="Predation risk for 10 cm prey")
-
-    # add a line assuming a predator/prey weight ratio of 20 instead of 10
     pss= suppressWarnings(PSS.f("all",PPWR=20))
+    pss.scaled= pss$pred.risk/max(pss$pred.risk)
+    plot(pss$year, pss.scaled[10,],type="l",lwd=2, ylim=c(0,.4),xlab="Year",ylab="Predation risk for 10 cm prey")
+
+    # add a line assuming a predator/prey weight ratio of 40 instead of 20
+    pss= suppressWarnings(PSS.f("all",PPWR=40))
     pss.scaled= pss$pred.risk/max(pss$pred.risk)
     lines(pss$year, pss.scaled[10,],lwd=2,col="blue")
 
-    legend("topleft",bty="n",lwd=2,col=c("black","blue"),lty=1,legend=c("PPWR=10","PPWR=20"),cex=0.9)
+    legend("topleft",bty="n",lwd=2,col=c("black","blue"),lty=1,legend=c("PPWR=20","PPWR=40"),cex=0.9)
 
 ![](README_files/figure-markdown_strict/PSS-1.png)
 
@@ -122,5 +122,9 @@ impacts. Canadian Journal of Fisheries and Aquatic Sciences 63: 810-820.
 Greenstreet, S.P., Rogers, S.I., Rice, J.C., Piet, G.J., Guirey, E.J.,
 Fraser, H.M. and Fryer, R.J. 2010. Development of the EcoQO for the
 North Sea fish community. ICES Journal of Marine Science 68: 1-11.
+
+Hahm, W. and Langton, R. 1984. Prey selection based on predator/prey
+weight ratios for some Northwest Atlantic fish. Marine Ecology Progress
+Series 19: 1-5.
 
 [![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
