@@ -6,8 +6,7 @@
 #'         It also harmonises field names and selects on type 1 and 2 sets and changes some field names and create new useful fields.
 #'         It create other data tables for computing the PLF indicators and basic data tables for other calculations. You will only
 #'         run this function when there is an update to the PACES data. once it is done, just load the datafiles before running your
-#'         analysis.
-#'         
+#'         analysis.         
 #'         Note that the package comes with the data but it might get out of date. In this case once you import updated data you need 
 #'         to make sure you keep using that updated data since there will always be older data available in the package. i.e. you might
 #'         not get an error and your analysis will continue to run fine but with the data that comes with the package.
@@ -133,9 +132,38 @@ import.paces.f= function(data.directory, save.rda=T){
   ngsl.lf.mean= ngsl.lf.mean[tmp,]
   save(ngsl.lf.mean,file= "ngsl.lf.mean.rdata")
   
-  PLF.cols= c("annee","espece","english","lenclass","abundance")
-  cols= match(PLF.cols,names(ngsl.lf.mean))
-  ngsl.plf.data= ngsl.lf.mean[,cols]
-  names(ngsl.plf.data)= c("year","codeqc","english","length","abundance")
-  save(ngsl.plf.data,file="ngsl.plf.data.rda")
+  ngsl.comm.cols= c("annee","espece","english","lenclass","abundance")
+  cols= match(ngsl.comm.cols,names(ngsl.lf.mean))
+  ngsl.comm.data= ngsl.lf.mean[,cols]
+  names(ngsl.comm.data)= c("year","codeqc","english","length","abundance")
+  save(ngsl.comm.data,file="ngsl.comm.data.rda")
+}
+
+#' Selects sub data based on species group or a species code for further analysis
+#' @param ngsl.comm.data ngsl community data
+#' @param species.groups ngsl species groups with codes (codeqc)
+#' @param species.group the species group you want to be represented in the data. The PLF is generally computed only for demersals
+#'      If "code", then you need to provide the Quebec species numerical code.
+#' @param codeqc the species numerical code used in Quebec region for a species. 792 is unspeciated redfish
+#' @description Called by community indicator functions. It is unlikely that you will want to call this on its own
+#' @export
+datasel.f=function(ngsl.comm.data, species.groups, species.group, codeqc){
+  ngsl.sub= merge(ngsl.comm.data,species.groups,by="codeqc")
+  
+  if (species.group=="all"){
+    ngsl.sub= ngsl.sub[ngsl.sub$representative.sample==1,]
+  }
+  if (species.group=="demersal"){ #all bottom dwellers from the survey including invertebrates
+    ngsl.sub= ngsl.sub[ngsl.sub$representative.sample==1 & ngsl.sub$demersal==1,]
+  }
+  if (species.group=="groundfish"){# only demersal fish excluding invertebrates
+    ngsl.sub= ngsl.sub[ngsl.sub$representative.sample.fish==1 & ngsl.sub$groundfish==1,]
+  }
+  if (species.group=="pelagic"){
+    ngsl.sub= ngsl.sub[ngsl.sub$representative.sample==1 & ngsl.sub$pelagic==1,]
+  }
+  if (species.group=="code"){
+    ngsl.sub= ngsl.sub[ngsl.sub$codeqc==codeqc,]
+  }
+  ngsl.sub
 }

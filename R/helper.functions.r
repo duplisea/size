@@ -4,7 +4,6 @@
 #' @param model.type the kind of model to fit ("poly", "gam", "gam.adaptive","avg")
 #' @description Works the same as sql function count(distinct x) when using a groupby statement
 #' @export
-#' @example 
 count.distinct= function(vector.name){
   n.dist= length(unique(vector.name))
   n.dist
@@ -15,7 +14,6 @@ count.distinct= function(vector.name){
 #' @param degminsec in one number e.g. 44 38' 52", input as 443852
 #' @description Decimal degrees
 #' @export
-#' @example 
 decdeg.f= function(degminsec){
   # convert geographic coordinates in degree minutes seconds into decimal decgrees
   # in one number e.g. 44 38' 52", input as 443852
@@ -29,11 +27,12 @@ decdeg.f= function(degminsec){
 
 #' Wrapper for the PBSmapping plotMap function
 #'
-#' @param
+#' @param longs longitude coordinates for map corners (western hempshere is -)
+#' @param lats latitude coordinates for map corners (southern hemisphere is -)
+#' @param land.colour colour of the land on the map
+#' @param sea.colour colour of the sea on the map
 #' @keywords helper function
 #' @export
-#' @examples
-#'
 map.f= function(longs=c(-74,-50),lats=c(43,52.25),land.colour="sienna3",sea.colour="lightblue"){
   data(worldLLhigh)
   worldLLhigh$X=(worldLLhigh$X+180)%%360-180

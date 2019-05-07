@@ -16,8 +16,7 @@ Imports data into R from the PACES .csv output. It also saves them as R binary d
         It also harmonises field names and selects on type 1 and 2 sets and changes some field names and create new useful fields.
         It create other data tables for computing the PLF indicators and basic data tables for other calculations. You will only
         run this function when there is an update to the PACES data. once it is done, just load the datafiles before running your
-        analysis.
-        
+        analysis.         
         Note that the package comes with the data but it might get out of date. In this case once you import updated data you need 
         to make sure you keep using that updated data since there will always be older data available in the package. i.e. you might
         not get an error and your analysis will continue to run fine but with the data that comes with the package.
