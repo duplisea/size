@@ -69,7 +69,7 @@ pss= suppressWarnings(PSS.f("all",PPWR=40))
 pss.scaled= pss$pred.risk/max(pss$pred.risk)
 lines(pss$year, pss.scaled[10,],lwd=2,col="blue")
 
-legend("topleft",bty="n",lwd=2,col=c("black","blue"),lty=1,legend=c("PPWR=20","PPWR=40"),cex=0.9)
+legend("topleft",bty="n",lwd=2,col=c("black","blue"),lty=1,legend=c("PPWR=20","PPWR=40"),cex=0.85)
 ```
 
 What you see is essentially the impact of the huge redfish year-class from 2011 becoming predators. if the PPWR is 10 then this year class starts having a large impacts on 10 cm prey by 2018 but if the PPWR is 20, prey of 10 cm are still mostly too large for this year class of redfish. The increase in predation risk will come further along.

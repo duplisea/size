@@ -8,10 +8,11 @@ PSS.f(species.group, codeqc, PPWR = 30, PPWR.cv = 0.25, minPPWR = 5,
   QWb = 0.75)
 }
 \arguments{
-\item{species.group}{the species group you want to be represented in the data. The PLF is generally computed only for demersals
-If "code", then you need to provide the Quebec species numerical code.}
+\item{species.group}{the species group you want to be represented in the data. The PLF is generally computed 
+only for demersals. Choices are "groundfish", "demersal", "pelagic". If "code", then you need to 
+provide the Quebec species numerical code (codeqc).}
 
-\item{codeqc}{the species numerical code used in Quebec region for a species. 792 is unspeciated redfish. Look at the species 
+\item{codeqc}{the numerical code used in Quebec region for a species. 792 is unspeciated redfish. Look at the "species" 
 table (codeqc) for other species}
 
 \item{PPWR}{the mean predator/prey weight ratio. If 10, then the predator on average weighs 10x more than its prey}

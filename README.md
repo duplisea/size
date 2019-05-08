@@ -64,7 +64,7 @@ to appear in this markdown file.
     pss.scaled= pss$pred.risk/max(pss$pred.risk)
     lines(pss$year, pss.scaled[10,],lwd=2,col="blue")
 
-    legend("topleft",bty="n",lwd=2,col=c("black","blue"),lty=1,legend=c("PPWR=20","PPWR=40"),cex=0.9)
+    legend("topleft",bty="n",lwd=2,col=c("black","blue"),lty=1,legend=c("PPWR=20","PPWR=40"),cex=0.85)
 
 ![](README_files/figure-markdown_strict/PSS-1.png)
 

@@ -142,8 +142,9 @@ import.paces.f= function(data.directory, save.rda=T){
 #' Selects sub data based on species group or a species code for further analysis
 #' @param ngsl.comm.data ngsl community data
 #' @param species.groups ngsl species groups with codes (codeqc)
-#' @param species.group the species group you want to be represented in the data. The PLF is generally computed only for demersals
-#'      If "code", then you need to provide the Quebec species numerical code.
+#' @param species.group the species group you want to be represented in the data. The PLF is generally computed 
+#'      only for demersals. Choices are "groundfish", "demersal", "pelagic". If "code", then you need to 
+#'      provide the Quebec species numerical code (codeqc).
 #' @param codeqc the species numerical code used in Quebec region for a species. 792 is unspeciated redfish
 #' @description Called by community indicator functions. It is unlikely that you will want to call this on its own
 #' @export

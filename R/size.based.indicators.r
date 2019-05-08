@@ -1,6 +1,8 @@
 #' Community length frequency
 #'
-#' @param species.group the species group you want to be represented in the data. The PLF is generally computed only for demersals. If "code", then you need to provide the Quebec species numerical code.
+#' @param species.group the species group you want to be represented in the data. The PLF is generally computed 
+#'      only for demersals. Choices are "groundfish", "demersal", "pelagic". If "code", then you need to 
+#'      provide the Quebec species numerical code (codeqc).
 #' @param codeqc the species numerical code used in Quebec region for a species. 792 is unspeciated redfish. Look at the species 
 #'         table (codeqc) for other species
 #' @description The Community length frequency distribution or numbers at length size spectrum. 1cm length bins are used
@@ -19,7 +21,9 @@ CLF.f= function(species.group, codeqc){
 
 #' Numbers at log2 weight size spectrum
 #'
-#' @param species.group the species group you want to be represented in the data. The PLF is generally computed only for demersals. If "code", then you need to provide the Quebec species numerical code.
+#' @param species.group the species group you want to be represented in the data. The PLF is generally computed 
+#'      only for demersals. Choices are "groundfish", "demersal", "pelagic". If "code", then you need to 
+#'      provide the Quebec species numerical code (codeqc).
 #' @param codeqc the species numerical code used in Quebec region for a species. 792 is unspeciated redfish. Look at the species 
 #'         table (codeqc) for other species
 #' @description The numbers an biomass at log2 weight class size spectrum for the community components you select. 
@@ -40,9 +44,10 @@ SS.f= function(species.group, codeqc){
 
 #' Predation size spectrum
 #'
-#' @param species.group the species group you want to be represented in the data. The PLF is generally computed only for demersals
-#'      If "code", then you need to provide the Quebec species numerical code.
-#' @param codeqc the species numerical code used in Quebec region for a species. 792 is unspeciated redfish. Look at the species 
+#' @param species.group the species group you want to be represented in the data. The PLF is generally computed 
+#'      only for demersals. Choices are "groundfish", "demersal", "pelagic". If "code", then you need to 
+#'      provide the Quebec species numerical code (codeqc).
+#' @param codeqc the numerical code used in Quebec region for a species. 792 is unspeciated redfish. Look at the "species" 
 #'         table (codeqc) for other species
 #' @param PPWR the mean predator/prey weight ratio. If 10, then the predator on average weighs 10x more than its prey
 #' @param PPWR.cv the coefficient of variation of the predator prey weight ratio
@@ -115,8 +120,9 @@ PSS.f= function(species.group, codeqc, PPWR=30, PPWR.cv=0.25, minPPWR=5, QWb=0.7
 #' Compute the proportion of large fish from the survey data
 #'
 #' @param cutoff the size (cm) marking the ditinction between large and small fish. Large fish are >= to this size.
-#' @param species.group the species group you want to be represented in the data. The PLF is generally computed only for demersals
-#'         If "code", then you need to provide the Quebec species numerical code.
+#' @param species.group the species group you want to be represented in the data. The PLF is generally computed 
+#'      only for demersals. Choices are "groundfish", "demersal", "pelagic". If "code", then you need to 
+#'      provide the Quebec species numerical code (codeqc).
 #' @param codeqc the species numerical code used in Quebec region for a species. 792 is unspeciated redfish. Look at the species 
 #'         table (codeqc) for other species
 #' @description The proporption of large fish indicator by abundance.
