@@ -55,16 +55,20 @@ predators in the system in a year.
 type ?PSS.f to see why I suppressed the warnings and I do not want them
 to appear in this markdown file.
 
-    pss= suppressWarnings(PSS.f("all",PPWR=20))
+    pss= suppressWarnings(PSS.f("all",PPWR=10))
     pss.scaled= pss$pred.risk/max(pss$pred.risk)
-    plot(pss$year, pss.scaled[10,],type="l",lwd=2, ylim=c(0,.4),xlab="Year",ylab="Predation risk for 10 cm prey")
+    prey.size=10
+    plot(pss$year, pss.scaled[prey.size,],type="l",lwd=2,   ylim=c(0,max(pss.scaled[prey.size,])),col="red",xlab="Year",ylab="Predation risk for 10 cm prey")
 
-    # add a line assuming a predator/prey weight ratio of 40 instead of 20
-    pss= suppressWarnings(PSS.f("all",PPWR=40))
+    pss= suppressWarnings(PSS.f("all",PPWR=100))
     pss.scaled= pss$pred.risk/max(pss$pred.risk)
-    lines(pss$year, pss.scaled[10,],lwd=2,col="blue")
+    lines(pss$year, pss.scaled[prey.size,],lwd=2,col="blue")
 
-    legend("topleft",bty="n",lwd=2,col=c("black","blue"),lty=1,legend=c("PPWR=20","PPWR=40"),cex=0.85)
+    pss= suppressWarnings(PSS.f("all",PPWR=30))
+    pss.scaled= pss$pred.risk/max(pss$pred.risk)
+    lines(pss$year, pss.scaled[prey.size,],lwd=2,col="black")
+
+    legend("topleft",bty="n",lwd=2,col=c("black","red","blue"),lty=1,legend=c("PPWR=30","PPWR=10","PPWR=100"),cex=0.8)
 
 ![](README_files/figure-markdown_strict/PSS-1.png)
 
