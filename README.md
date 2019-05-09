@@ -75,8 +75,13 @@ to appear in this markdown file.
 What you see is essentially the impact of the huge redfish year-class
 from 2011 becoming predators. if the PPWR is 10 then this year class
 starts having a large impacts on 10 cm prey by 2018 but if the PPWR is
-20, prey of 10 cm are still mostly too large for this year class of
-redfish. The increase in predation risk will come further along.
+30, prey of 10 cm are still mostly too large for this year class of
+redfish. The increase in predation risk will come further along. If the
+PPWR is 100, then there the predation index is much less dynamic. This
+is because the predators are not only quite different in size than their
+prey but the spread of prey sizes they target is also larger and
+therefore the predation impact of any particular predator cohort is much
+more diffuse.
 
 PLF analysis with the installed dataset
 ---------------------------------------
