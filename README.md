@@ -29,36 +29,32 @@ Use length cutoffs so catches outside of individuals between 10 cm and
 
 ![](README_files/figure-markdown_strict/LFS-1.png)
 
-Fit linear models to the distribution each year and then plot the slopes
-and run a gam trend line through them. The interpretation on these kinds
-of plots is that the more negative the slope is, the fewer large fish
-there are relative to smaller one. So for example fisheries which target
-large individuals may be reducing their abundance to such a degree that
-there is a paucity of individuals of large sizes over the whole
-community. It raises the idea of whether there is a slope which is ideal
-for a particular system and invokes ideas related to balanced fishing
-strategies, i.e. should we be targetting individuals over a large range
-of sizes so that the system is not “out of balance” given the size
-dependence of many physiological processes of individuals and ecological
-processes in marine communities.
+These are kind of boring plots without a lot of information for analysis
+but they are more diagnostics. They do act as a quick visualisation of
+the data and you can spot outliers quickly and figure out if they are
+real and further investigate them. You should not be trying to force a
+straight line through data that are clearly not linear.
 
     LFS.lm= CLF.lm.fit(LFS, 10, 100)
     plot(LFS.lm)
 
-    ## Loading required package: nlme
+![](README_files/figure-markdown_strict/LFSab-1.png)
 
-    ## 
-    ## Attaching package: 'nlme'
+Fit linear models to the distribution each year and then plot the slopes
+and run a gam trend line through them. The interpretation on these kinds
+of plots is that the more negative the slope is, the fewer large fish
+there are relative to smaller ones. So for example fisheries which
+target large individuals may be reducing their abundance to such a
+degree that there is a paucity of individuals of large sizes over the
+whole community. It raises the idea of whether there is a slope which is
+ideal for a particular system and invokes ideas related to balanced
+fishing strategies, i.e. should we be targetting individuals over a
+large range of sizes so that the system is not “out of balance” given
+the size dependence of many physiological processes of individuals and
+ecological processes in marine communities.
 
-    ## The following object is masked from 'package:dplyr':
-    ## 
-    ##     collapse
-
-    ## This is mgcv 1.8-28. For overview type 'help("mgcv-package")'.
-
-![](README_files/figure-markdown_strict/LFSab-1.png) \#\# Size spectrum
-of the northern Gulf fish and invertebrate community using log2 weight
-classes
+Size spectrum of the northern Gulf fish and invertebrate community using log2 weight classes
+--------------------------------------------------------------------------------------------
 
 Numbers per haul in log2 weight categories
 
