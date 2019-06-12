@@ -76,6 +76,13 @@ import.paces.f= function(data.directory, save.rda=T){
   # bump up counts of individuals by the catch subsample
   ngsl$abundance= ngsl$nb_cor*ngsl$catch.subsample
 
+  # convert all shrimp carapace lengths to total lengths
+  shrimps=c(8024,8033,8035,8039,8040,8056,8057,8074,8075,8077,8079,8080,8081,8084,8085,8086,8087,
+    8092,8093,8095,8111,8112,8113,8119,8128,8129,8135)
+  shrimp.rows=  match(ngsl$espece, shrimps)
+  shrimp.CL.to.TL.conversion.factor= 5.71 #from Bergstrom 1992. MEPS
+  ngsl$longuer[shrimp.rows]= ngsl[shrimp.rows,]$longueur*shrimp.CL.to.TL.conversion.factor
+  
   #create 1 cm length classes for LF distribution
   ngsl$lenclass= floor((ngsl$longueur-5)/10)+1 # e.g. lenclass 12 is all fish between 11.5 and 12.4 cm
 
@@ -167,4 +174,28 @@ datasel.f=function(ngsl.comm.data, species.groups, species.group, codeqc){
     ngsl.sub= ngsl.sub[ngsl.sub$codeqc==codeqc,]
   }
   ngsl.sub
+}
+
+
+#' Determine length based catchability by fish morphotype
+#' @param L length of the individual, cm
+#' @param alpha length at q=0.5
+#' @param beta the slope of the logistic curve
+#' @param gamma the asymptote of the logistic curve
+#' @param morpho.group a morpho-group designation for each species which describes the body form and preferred habitat as a means of q correcting the abundance index
+#' @description A logistic curve parameterised on assessment results from nGSL selectivity curves as well as literature
+#' @references 
+#'         Harley, S.J. and Myers, R.A., 2001. Hierarchical Bayesian models of length-specific catchability of research trawl surveys. Canadian Journal of Fisheries and Aquatic Sciences 58: 1569-1584.
+#'         
+#' @export
+q.correct.f= function(L, alpha, beta, gamma){
+  #morphogroup  alpha   beta      gamma   reference
+  #demgad	      38.1	  9.8945	  0.8377
+  #pelgad	      58.3	  12.6823	  0.4575
+  #flatfish	    39.2	  8.9686	  0.7735
+  #eelish	      72.0	  5.1813	  1.6600  Harley & Myers 2001
+  #sebastes     10.2    1.042     0.6     Duplisea calcs based on McAllister 2019. Search files "redfish.selectivity.fit.logistic.r"
+  #shrimp
+  q= gamma/(1+exp(-(L-alpha)/beta))
+  q
 }

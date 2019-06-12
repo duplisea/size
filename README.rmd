@@ -2,7 +2,7 @@
 title: "README"
 author: "Daniel E. Duplisea"
 date: ""
-output: md_document
+output: html_document
 ---
 
 [![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
@@ -29,8 +29,22 @@ map.f()
 points(-decdeg.f(ngsl.set$lon_deb*100),decdeg.f(ngsl.set$lat_deb*100),pch=".",col="red")
 ```
 
+## The length frequency spectrum of the northern Gulf fish and invertebrate community using length classes
 
-## Size spectrum of the norther Gulf fish and invertebrate community
+Use length cutoffs so catches outside of individuals between 10 cm and 100 cm is used.
+
+```{r LFS}
+LFS= CLF.f("all")
+plot(LFS, 10, 100)
+```
+
+
+Fit linear models to the distribution each year and then plot the slopes and run a gam trend line through them. The interpretation on these kinds of plots is that the more negative the slope is, the fewer large fish there are relative to smaller one. So for example fisheries which target large individuals may be reducing their abundance to such a degree that there is a paucity of individuals of large sizes over the whole community. It raises the idea of whether there is a slope which is ideal for a particular system and invokes ideas related to balanced fishing strategies, i.e. should we be targetting individuals over a large range of sizes so that the system is not "out of balance" given the size dependence of many physiological processes of individuals and ecological processes in marine communities.
+```{r LFSab}
+LFS.lm= CLF.lm.fit(LFS, 10, 100)
+plot(LFS.lm)
+```
+## Size spectrum of the northern Gulf fish and invertebrate community using log2 weight classes
 
 Numbers per haul in log2 weight categories
 
@@ -76,7 +90,7 @@ lines(pss$year, pss.scaled[prey.size,],lwd=2,col="black")
 legend("topleft",bty="n",lwd=2,col=c("black","red","blue"),lty=1,legend=c("PPWR=30","PPWR=10","PPWR=100"),cex=0.8)
 ```
 
-What you see is essentially the impact of the huge redfish year-class from 2011 becoming predators. if the PPWR is 10 then this year class starts having a large impacts on 10 cm prey by 2018 but if the PPWR is 30, prey of 10 cm are still mostly too large for this year class of redfish. The increase in predation risk will come further along. If the PPWR is 100, then there the predation index is much less dynamic. This is because the predators are not only quite different in size than their prey but the spread of prey sizes they target is also larger and therefore the predation impact of any particular predator cohort is much more diffuse.
+What you see is essentially the impact of the huge redfish year-class from 2011 becoming predators. if the PPWR is 10 then this year class starts having a large impacts on 10 cm prey by 2018 but if the PPWR is 30, prey of 10 cm are still mostly too large for this year class of redfish. The increase in predation risk will come further along. If the PPWR is 100, then there the predation index is much less dynamic. This is because the predators are not only quite different in size than their prey but the spread of prey sizes they target is also larger and therefore the predation impact of any particular predator cohort is much more diffuse over length classes.
 
 ## PLF analysis with the installed dataset
 

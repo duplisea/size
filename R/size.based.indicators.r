@@ -15,7 +15,10 @@ CLF.f= function(species.group, codeqc){
   CLF= CLF[CLF$length>0,]
   CLF$wgt=0.1*CLF$length^3
   CLF= CLF[order(CLF$year,CLF$length),]
-  CLF
+  CLFout=list(CLF=CLF)
+  class(CLFout)= "CLF"
+  #class(CLFout) <- c(CLFout$class, c("CLF", "data.frame","matrix"))
+  CLFout
 }
 
 
@@ -33,6 +36,7 @@ CLF.f= function(species.group, codeqc){
 #' @export
 SS.f= function(species.group, codeqc){
   CLF= CLF.f(species.group=species.group, codeqc=codeqc)
+  CLF= CLF[[1]]
   CLF$lg2W= floor(log2(CLF$wgt))
   CLF$biomass= CLF$abundance*CLF$wgt
   SS= aggregate(list(CLF$abundance,CLF$biomass),list(CLF$year,CLF$lg2W),sum)
@@ -82,6 +86,7 @@ SS.f= function(species.group, codeqc){
 #' @export
 PSS.f= function(species.group, codeqc, PPWR=30, PPWR.cv=0.25, minPPWR=5, QWb=0.75){
   CLF= CLF.f(species.group=species.group,codeqc=codeqc)
+  CLF= CLF[[1]]
   years= sort(unique(CLF$year))
   preylen= 1:200
   preywgt= 0.1*(preylen)^3
@@ -130,7 +135,6 @@ PSS.f= function(species.group, codeqc, PPWR=30, PPWR.cv=0.25, minPPWR=5, QWb=0.7
 #'         Greenstreet, S.P., Rogers, S.I., Rice, J.C., Piet, G.J., Guirey, E.J., Fraser, H.M. and Fryer, R.J. 2010. Development of the EcoQO for the North Sea fish community. ICES Journal of Marine Science 68: 1-11.
 #' @export
 PLF.f= function(cutoff=30, species.group="demersal", codeqc=792){
-  
   ngsl.plf= datasel.f(ngsl.comm.data=ngsl.comm.data, species.groups=species.groups, species.group=species.group, codeqc=codeqc)
   large.data= ngsl.plf[ngsl.plf$length>=cutoff,]
   large.fish= aggregate(large.data$abundance,by=list(large.data$year),FUN=sum)
