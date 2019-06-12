@@ -18,8 +18,47 @@ Plot the survey locations on a map of the Gulf
 
 ![](README_files/figure-markdown_strict/mapsurvey-1.png)
 
-Size spectrum of the norther Gulf fish and invertebrate community
------------------------------------------------------------------
+The length frequency spectrum of the northern Gulf fish and invertebrate community using length classes
+-------------------------------------------------------------------------------------------------------
+
+Use length cutoffs so catches outside of individuals between 10 cm and
+100 cm is used.
+
+    LFS= CLF.f("all")
+    plot(LFS, 10, 100)
+
+![](README_files/figure-markdown_strict/LFS-1.png)
+
+Fit linear models to the distribution each year and then plot the slopes
+and run a gam trend line through them. The interpretation on these kinds
+of plots is that the more negative the slope is, the fewer large fish
+there are relative to smaller one. So for example fisheries which target
+large individuals may be reducing their abundance to such a degree that
+there is a paucity of individuals of large sizes over the whole
+community. It raises the idea of whether there is a slope which is ideal
+for a particular system and invokes ideas related to balanced fishing
+strategies, i.e. should we be targetting individuals over a large range
+of sizes so that the system is not “out of balance” given the size
+dependence of many physiological processes of individuals and ecological
+processes in marine communities.
+
+    LFS.lm= CLF.lm.fit(LFS, 10, 100)
+    plot(LFS.lm)
+
+    ## Loading required package: nlme
+
+    ## 
+    ## Attaching package: 'nlme'
+
+    ## The following object is masked from 'package:dplyr':
+    ## 
+    ##     collapse
+
+    ## This is mgcv 1.8-28. For overview type 'help("mgcv-package")'.
+
+![](README_files/figure-markdown_strict/LFSab-1.png) \#\# Size spectrum
+of the northern Gulf fish and invertebrate community using log2 weight
+classes
 
 Numbers per haul in log2 weight categories
 
@@ -81,7 +120,7 @@ PPWR is 100, then there the predation index is much less dynamic. This
 is because the predators are not only quite different in size than their
 prey but the spread of prey sizes they target is also larger and
 therefore the predation impact of any particular predator cohort is much
-more diffuse.
+more diffuse over length classes.
 
 PLF analysis with the installed dataset
 ---------------------------------------
