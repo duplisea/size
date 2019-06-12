@@ -33,7 +33,7 @@ points(-decdeg.f(ngsl.set$lon_deb*100),decdeg.f(ngsl.set$lat_deb*100),pch=".",co
 
 Use length cutoffs so catches outside of individuals between 10 cm and 100 cm is used.
 
-```{r LFS}
+```{r LFS, message=FALSE}
 LFS= CLF.f("all")
 plot(LFS, 10, 100)
 ```
