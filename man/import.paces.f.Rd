@@ -4,7 +4,7 @@
 \alias{import.paces.f}
 \title{Import data from the PACES output into R}
 \usage{
-import.paces.f(data.directory, save.rda = T)
+import.paces.f(data.directory, save.rda = F)
 }
 \arguments{
 \item{data.directory}{where your PACES .csv files are stored, e.g. "s:/releves..."}

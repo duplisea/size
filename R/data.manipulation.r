@@ -11,7 +11,7 @@
 #'         to make sure you keep using that updated data since there will always be older data available in the package. i.e. you might
 #'         not get an error and your analysis will continue to run fine but with the data that comes with the package.
 #' @export
-import.paces.f= function(data.directory, save.rda=T){
+import.paces.f= function(data.directory, save.rda=F){
   # import data from csv, noting delimiters
   #if (!exists("ngsl.set")) ngsl.set= read.csv("NGSL_Set.csv",header=T,sep=";")
   #if (!exists("ngsl.catch")) ngsl.catch= read.csv("NGSL_Capt.csv",header=T,sep=";")
@@ -79,7 +79,7 @@ import.paces.f= function(data.directory, save.rda=T){
   # convert all shrimp carapace lengths to total lengths
   shrimps=c(8024,8033,8035,8039,8040,8056,8057,8074,8075,8077,8079,8080,8081,8084,8085,8086,8087,
     8092,8093,8095,8111,8112,8113,8119,8128,8129,8135)
-  shrimp.rows=  match(ngsl$espece, shrimps)
+  shrimp.rows=!is.na(match(ngsl$espece, shrimps))
   shrimp.CL.to.TL.conversion.factor= 5.71 #from Bergstrom 1992. MEPS
   ngsl$longuer[shrimp.rows]= ngsl[shrimp.rows,]$longueur*shrimp.CL.to.TL.conversion.factor
   
@@ -95,7 +95,7 @@ import.paces.f= function(data.directory, save.rda=T){
   ngsl.lf.base= merge(ngsl.strat,ngsl.lf.base, by = c("no_str"))
   ngsl.lf.base$setid= paste(ngsl.lf.base$source, ngsl.lf.base$no_rel, ngsl.lf.base$nbpc,ngsl.lf.base$annee,ngsl.lf.base$no_str,ngsl.lf.base$no_stn,sep="")
   ngsl.lf.base= ngsl.lf.base[!is.na(ngsl.lf.base$abundance),]
-  save(ngsl.lf.base,file="ngsl.lf.base.rdata")
+  #save(ngsl.lf.base,file="ngsl.lf.base.rdata")
   
   # station count per stratum by vessel and year. For computing a mean haul for a stratum
   mycols=c("source", "no_rel", "nbpc","annee","no_str")
@@ -137,13 +137,25 @@ import.paces.f= function(data.directory, save.rda=T){
   ngsl.lf.mean$abundance= lf.tmp$weighted.sum/lf.tmp$surfkm91
   tmp= order(ngsl.lf.mean$source,ngsl.lf.mean$annee,ngsl.lf.mean$espece,ngsl.lf.mean$lenclass)
   ngsl.lf.mean= ngsl.lf.mean[tmp,]
-  save(ngsl.lf.mean,file= "ngsl.lf.mean.rdata")
+  #save(ngsl.lf.mean,file= "ngsl.lf.mean.rdata")
   
   ngsl.comm.cols= c("annee","espece","english","lenclass","abundance")
   cols= match(ngsl.comm.cols,names(ngsl.lf.mean))
   ngsl.comm.data= ngsl.lf.mean[,cols]
   names(ngsl.comm.data)= c("year","codeqc","english","length","abundance")
-  save(ngsl.comm.data,file="ngsl.comm.data.rda")
+  #save(ngsl.comm.data,file="ngsl.comm.data.rda")
+  
+  # put all outputs into a list
+  fish.survey.data= list(
+    ngsl.set=ngsl.set,
+    ngsl.catch= ngsl.catch,
+    ngsl.cbio=ngsl.cbio,
+    ngsl.strat=ngsl.strat,
+    species=species,
+    ngsl.lf.base=ngsl.lf.base,
+    ngsl.lf.mean=ngsl.lf.mean,
+    ngsl.comm.data=ngsl.comm.data)
+  fish.survey.data
 }
 
 #' Selects sub data based on species group or a species code for further analysis
